@@ -13,7 +13,7 @@ class NetworkService {
     
     private init() { }
     
-    //Network request to get the buttons from the API.
+    //Network request to get the all meals from the API.
     func getMeals() async throws -> [Meal] {
         let path = "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert"
         //Creates url 'safe' path
@@ -27,6 +27,7 @@ class NetworkService {
         return decodedData.meals.sorted(by: { $0.strMeal < $1.strMeal })
     }
     
+    //Network request to get meal details from the API.
     func getMeals(id: String) async throws -> MealDetails {
         let path = "https://themealdb.com/api/json/v1/1/lookup.php?i=\(id)"
         //Creates url 'safe' path
